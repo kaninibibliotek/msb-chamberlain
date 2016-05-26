@@ -1,0 +1,6 @@
+{
+    "type": "krumelur",
+    "source": "test/krumelur.jpg",
+    "duration": 4,
+    "animation": "jump"
+}

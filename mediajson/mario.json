@@ -1,0 +1,6 @@
+{
+    "type": "krumelur",
+    "source": "test/image.jpg",
+    "duration": 3,
+    "animation": "spin"
+}
