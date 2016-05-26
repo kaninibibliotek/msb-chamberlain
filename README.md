@@ -1,6 +1,8 @@
 # msb-chamberlain
 
-Application server for Lilla slottet. It serves the `msb-miniscreen`
+:tophat: Application server for Lilla slottet. 
+
+Chamberlain serves the `msb-miniscreen` and `msb-krumelur-player` applications and provides a REST API for accessing local files on the NAS.
 
 ## Setup
 
@@ -35,7 +37,7 @@ $ open http://localhost:3000/msb-miniscreen/blixt
 or msb-krumelurmaskin-player
 
 ```sh
-$ open http://localhost:3000/msb-krumelurmaskin-player
+$ open http://localhost:3000/msb-krumelur-player
 ```
 
 ## Deploy
