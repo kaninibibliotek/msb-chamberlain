@@ -1,5 +1,7 @@
 // TODO move file reading stuff
 var fs = require('fs');
+var path = require('path');
+var config = require('./config');
 
 var krumelurer = [];
 var media      = [];
@@ -46,18 +48,43 @@ function getRandomKrumelurer(amount) {
   return rk;
 }
 
+
+const getKrumelur = function(req, res) {
+  var amount = parseInt(req.params.amount);
+
+  console.log("GET krumelurer", amount);
+
+  res.send(getRandomKrumelurer(amount));
+}
+
+// TODO
+function getMediaType(file) {
+  return 'image';
+}
+
+// Sends JSON representation of all files in a miniscreen folder
+const getMiniscreen = function(req, res) {
+  const screenId = req.params.id;
+  const screenDir = path.resolve(config.FS_ROOT, 'miniskärmar', screenId); 
+
+  fs.readdir(screenDir, function(err, files) {
+    if (err) {
+      console.log(err);
+    } else {
+      const mediaArr = files.map(file => ({
+        type: getMediaType(file),
+        url: file,
+        duration: 666,
+        behavior: 'crazy',
+      }));
+      
+      res.json(mediaArr);
+    }
+  });
+}
+
+
 module.exports = {
-  getKrumelur: function(req, res) {
-    var amount = parseInt(req.params.amount);
-
-    console.log("GET krumelurer", amount);
-
-    res.send(getRandomKrumelurer(amount));
-  },
-
-  getMiniscreen: function(req, res) {
-    console.log("GET miniscreen", req.params.id);
-
-    res.send(media);
-  }
+  getKrumelur,
+  getMiniscreen,
 };
