@@ -6,8 +6,8 @@ Chamberlain serves the `msb-miniscreen` and `msb-krumelur-player` applications a
 
 ## Setup
 
-- Install Node.js
-- Install the Miniscreen and Krumelurplayer applications
+Install Node.js
+Install the Miniscreen and Krumelurplayer applications
 
 ```sh
 $ git clone https://github.com/unsworn/msb-miniscreen.git 

@@ -1,5 +1,6 @@
 var express = require('express');
 var morgan = require('morgan');
+var path = require('path');
 var config = require('./config.js');
 var api    = require('./api.js');
 
@@ -8,9 +9,15 @@ var app = express();
 // Logging
 app.use(morgan('dev'));
 
+// Static miniscreen media and Krumelur files in the NAS public folder 
+app.use('/miniscreens', express.static(path.resolve(config.FS_ROOT, 'miniskärmar')));
+app.use('/krumelurs', express.static(path.resolve(config.FS_ROOT, 'krumelurer')));
+
+// Application JS and CSS resources
 app.use('/msb-krumelur-player', express.static(config.KRUMELUR_PLAYER));
 app.use('/msb-miniscreen', express.static(config.MINISCREEN));
 
+// REST API
 app.get('/api/krumelur/random/:amount', api.getKrumelur);
 app.get('/api/miniscreen/:id', api.getMiniscreen);
 
