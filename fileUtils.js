@@ -41,7 +41,7 @@ function getDuration(file) {
 
 function parseFile(file) {
   return {
-    behavior: getKrumelurBehavior(file)
+    behavior: getKrumelurBehavior(file),
     // duration: getDuration(file),
     type:     getMediaType(file),
     url:      file,
