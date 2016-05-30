@@ -14,8 +14,8 @@ app.use('/miniscreens', express.static(path.resolve(config.FS_ROOT, 'miniskärma
 app.use('/krumelurs', express.static(path.resolve(config.FS_ROOT, 'krumelurer')));
 
 // Application JS and CSS resources
-app.use('/msb-krumelur-player', express.static(config.KRUMELUR_PLAYER));
-app.use('/msb-miniscreen', express.static(config.MINISCREEN));
+app.use('/msb-krumelur-player', express.static(config.KRUMELUR_PLAYER_APP_FOLDER));
+app.use('/msb-miniscreen', express.static(config.MINISCREEN_APP_FOLDER));
 
 // REST API
 app.get('/api/krumelur/random/:amount', api.getKrumelur);
