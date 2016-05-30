@@ -23,6 +23,9 @@ app.get('/api/krumelur/random/:amount', api.getRandomKrumelurs);
 app.post('/api/krumelur', api.postKrumelur);
 app.get('/api/miniscreen/:id', api.getMiniscreen);
 
+// Error handling
+app.use(api.errorHandler);
+
 var port = process.env.PORT || 3000;
 var mode = process.env.NODE_ENV === 'development' ? 'development' : 'production';
 
