@@ -1,3 +1,28 @@
+var behaviors = require('./behaviors');
+
+function getKrumelurFileName() {
+  var date = new Date();
+
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+
+  var YYYYMMDD = timeUnitToString(year) + timeUnitToString(month) + timeUnitToString(day);
+  var HHMMSS = timeUnitToString(hours) + timeUnitToString(minutes) + timeUnitToString(seconds);
+
+  var behavior = behaviors.getRandom();
+
+  return YYYYMMDD + '_' + HHMMSS + '_krumelur_' + behavior + '.png';
+}
+
+function timeUnitToString(unit) {
+  return unit < 10 ? '0' + unit : unit.toString();
+}
+
 function getMediaType(file) {
   if (isKrumelur(file)) {
     return 'krumelur';
@@ -49,5 +74,6 @@ function parseFile(file) {
 }
 
 module.exports = {
-  parseFile: parseFile
+  parseFile: parseFile,
+  getKrumelurFileName: getKrumelurFileName
 };

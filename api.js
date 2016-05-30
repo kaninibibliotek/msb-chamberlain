@@ -19,7 +19,7 @@ function postKrumelur(req, res) {
 
   console.log("POST Krumelur", file.originalname);
 
-  fs.writeFile(path.resolve(config.FS_ROOT, 'krumelurer', file.originalname), file.buffer, 'utf8');
+  fs.writeFile(path.resolve(config.FS_ROOT, 'krumelurer', fileUtils.getKrumelurFileName()), file.buffer, 'utf8');
 
   res.sendStatus(200);
 }
