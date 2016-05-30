@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var config = require('./config.js');
-var api    = require('./api.js');
+var api    = require('./lib/api.js');
 
 var app = express();
 
@@ -18,7 +18,8 @@ app.use('/msb-krumelur-player', express.static(config.KRUMELUR_PLAYER_APP_FOLDER
 app.use('/msb-miniscreen', express.static(config.MINISCREEN_APP_FOLDER));
 
 // REST API
-app.get('/api/krumelur/random/:amount', api.getKrumelur);
+app.get('/api/krumelur/latest/:amount', api.getLatestKrumelurs);
+app.get('/api/krumelur/random/:amount', api.getRandomKrumelurs);
 app.post('/api/krumelur', api.postKrumelur);
 app.get('/api/miniscreen/:id', api.getMiniscreen);
 
