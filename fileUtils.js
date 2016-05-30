@@ -35,15 +35,17 @@ function getKrumelurBehavior(file) {
   return /_([^_]+)\.png$/.exec(file)[1];
 }
 
+/*
 function getDuration(file) {
   return 2000;
 }
+*/
 
 function parseFile(file) {
   return {
     type:     getMediaType(file),
     url:      file,
-    duration: getDuration(file),
+   // duration: getDuration(file),
     behavior: getKrumelurBehavior(file)
   };
 }
