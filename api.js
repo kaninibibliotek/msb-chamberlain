@@ -14,6 +14,16 @@ function getKrumelur(req, res) {
   res.send([]);
 }
 
+function postKrumelur(req, res) {
+  var file = req.files[0];
+
+  console.log("POST Krumelur", file.originalname);
+
+  fs.writeFile(path.resolve(config.FS_ROOT, 'krumelurer', file.originalname), file.buffer, 'utf8');
+
+  res.sendStatus(200);
+}
+
 // Sends JSON representation of all files in a miniscreen folder
 function getMiniscreen(req, res) {
   var screenId = req.params.id;
@@ -35,5 +45,6 @@ function getMiniscreen(req, res) {
 
 module.exports = {
   getKrumelur: getKrumelur,
+  postKrumelur: postKrumelur,
   getMiniscreen: getMiniscreen
 };
