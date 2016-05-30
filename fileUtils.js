@@ -11,12 +11,10 @@ function getMediaType(file) {
     case '.jpg':
     case '.jpeg':
       type = 'image';
-
       break;
     case '.mp4':
     case '.mov':
       type = 'video';
-
       break;
   }
 
@@ -43,10 +41,10 @@ function getDuration(file) {
 
 function parseFile(file) {
   return {
+    behavior: getKrumelurBehavior(file)
+    // duration: getDuration(file),
     type:     getMediaType(file),
     url:      file,
-   // duration: getDuration(file),
-    behavior: getKrumelurBehavior(file)
   };
 }
 
