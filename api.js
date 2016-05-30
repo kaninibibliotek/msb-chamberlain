@@ -14,6 +14,18 @@ function getKrumelur(req, res) {
   res.send([]);
 }
 
+
+// TODO!
+// Krumelurmaskin will post a new Krumelur here
+// Assign the Krumelur a behavior and save it with the correct filename
+function postKrumelur(req, res) {
+   
+  //var behavior = config.behaviors[random];
+  //
+  
+}
+
+
 // Sends JSON representation of all files in a miniscreen folder
 function getMiniscreen(req, res) {
   var screenId = req.params.id;
@@ -35,5 +47,6 @@ function getMiniscreen(req, res) {
 
 module.exports = {
   getKrumelur: getKrumelur,
+  postKrumelur: postKrumelur,
   getMiniscreen: getMiniscreen
 };

@@ -19,6 +19,7 @@ app.use('/msb-miniscreen', express.static(config.MINISCREEN_APP_FOLDER));
 
 // REST API
 app.get('/api/krumelur/random/:amount', api.getKrumelur);
+app.post('/api/krumelur', api.postKrumelur);
 app.get('/api/miniscreen/:id', api.getMiniscreen);
 
 var port = process.env.PORT || 3000;
