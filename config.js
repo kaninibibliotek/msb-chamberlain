@@ -17,4 +17,12 @@ module.exports = {
     'climber',
     'sun-gazer',
   ],
+
+  SUPPORTED_FORMATS: [
+    'png',
+    'jpg',
+    'gif',
+    'mp4',
+    'mov'
+  ],
 };
