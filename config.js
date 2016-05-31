@@ -21,6 +21,7 @@ module.exports = {
   SUPPORTED_FORMATS: [
     'png',
     'jpg',
+    'jpeg',
     'gif',
     'mp4',
     'mov'
