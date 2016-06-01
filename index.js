@@ -24,13 +24,13 @@ app.use('/miniscreen/files', express.static(path.resolve(config.FS_ROOT, config.
 app.use('/miniscreen/app', routes.miniscreen.app); // TODO: :id
 
 // Krumelur application and assets
-//app.use('/krumelur/assets', express.static(path.resolve(config.KRUMELUR_APP_FOLDER, 'assets')));
-//app.use('/miniscreen/files', express.static(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME))); 
-//app.use('/miniscreen/app', routes.krumelur.app); // TODO: :id
+app.use('/krumelur/assets', express.static(path.resolve(config.KRUMELUR_APP_FOLDER, 'assets')));
+app.use('/krumelur/files', express.static(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME))); 
+app.use('/krumelur/app', routes.krumelur.app); // TODO: :id
 
 // TODO: REMOVE THESE  ////////////////////
-app.use('/msb-krumelur-player/' + config.KRUMELUR_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME)));
-app.use('/msb-krumelur-player', express.static(config.KRUMELUR_PLAYER_APP_FOLDER));
+//app.use('/msb-krumelur-player/' + config.KRUMELUR_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME)));
+//app.use('/msb-krumelur-player', express.static(config.KRUMELUR_APP_FOLDER));
 
 ///////////////////////////////////////////
 

@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  KRUMELUR_PLAYER_APP_FOLDER: path.resolve(__dirname, '../msb-krumelur-player/'),
+  KRUMELUR_APP_FOLDER: path.resolve(__dirname, '../msb-krumelur-player/'),
   MINISCREEN_APP_FOLDER: path.resolve(__dirname, '../msb-miniscreen/'),
 
   KRUMELUR_FOLDER_NAME: 'krumelurer',

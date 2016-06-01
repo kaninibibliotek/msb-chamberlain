@@ -3,7 +3,7 @@ var path = require('path');
 var fs = require('fs');
 var config = require('../../config');
 
-var templatePath = path.resolve(config.KRUMELUR_PLAYER_APP_FOLDER, 'index.html');
+var templatePath = path.resolve(config.KRUMELUR_APP_FOLDER, 'index.html');
 var template = _.template(fs.readFileSync(templatePath));
 
 var templateData = {
