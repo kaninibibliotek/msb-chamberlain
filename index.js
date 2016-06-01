@@ -5,12 +5,16 @@ var path = require('path');
 var config = require('./config.js');
 var multer = require('multer');
 var api    = require('./lib/api.js');
+var routes = require('./routes');
 
 var upload = multer();
 var app = express();
 
 // Logging
 app.use(morgan('dev'));
+
+app.get('/miniscreentest', routes.miniscreen.app);
+app.get('/krumelurtest', routes.krumelur.app);
 
 // Static miniscreen media and Krumelur files in the NAS public folder
 app.use('/miniscreens', express.static(path.resolve(config.FS_ROOT, 'miniskärmar')));
@@ -25,6 +29,9 @@ app.get('/api/krumelur/latest/:amount', api.getLatestKrumelurs);
 app.get('/api/krumelur/random/:amount', api.getRandomKrumelurs);
 app.post('/api/krumelur', upload.any(), api.postKrumelur);
 app.get('/api/miniscreen/:id', api.getMiniscreen);
+
+
+
 
 // Error handling
 app.use(api.errorHandler);
