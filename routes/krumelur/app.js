@@ -14,7 +14,7 @@ module.exports = function sendKrumelurApp(req, res, next) {
     
     // Get masks
     fileUtils.getMasks(function(err, masks) {
-      console.log('masks', masks);
+      if (err) { next(err); }
 
       var markup = template({
         behaviors: JSON.stringify(behaviors || [], null, '  '),
