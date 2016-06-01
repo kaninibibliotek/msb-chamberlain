@@ -31,15 +31,11 @@ app.use('/miniscreen/assets', express.static(path.resolve(config.MINISCREEN_APP_
 app.use('/miniscreen/files', express.static(path.resolve(config.FS_ROOT, config.MINISCREEN_FOLDER_NAME))); 
 app.use('/miniscreen/app', routes.miniscreen.app); // TODO: :id
 
-/*
-// Static miniscreen media and Krumelur files in the NAS public folder
-app.use('/msb-miniscreen/' + config.MINISCREEN_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.MINISCREEN_FOLDER_NAME)));
+// Static Krumelur files in the NAS public folder
 app.use('/msb-krumelur-player/' + config.KRUMELUR_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME)));
 
 // Application JS and CSS resources
 app.use('/msb-krumelur-player', express.static(config.KRUMELUR_PLAYER_APP_FOLDER));
-app.use('/msb-miniscreen', express.static(config.MINISCREEN_APP_FOLDER));
-*/
 
 // REST API
 app.get('/api/krumelur/latest/:amount', api.getLatestKrumelurs);
