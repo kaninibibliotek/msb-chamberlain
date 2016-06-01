@@ -14,7 +14,6 @@ var templateData = {
 module.exports = function sendKrumelurApp(req, res) {
 
   var markup = template({serverData: JSON.stringify(templateData)});
-  res.send(markup);
-
-  //res.send(template);
+  //res.send(markup);
+  res.sendfile(templatePath);
 };
