@@ -4,7 +4,6 @@ var path = require('path');
 
 var config = require('./config.js');
 var multer = require('multer');
-var api    = require('./lib/api.js');
 var routes = require('./routes');
 
 var upload = multer();
@@ -19,28 +18,26 @@ app.use(function(req, res, next) {
   next();
 });
 
-// TESTING
-app.get('/miniscreentest', routes.miniscreen.app);
-app.get('/krumelurtest', routes.krumelur.app);
-
-
-console.log(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME));
-
 // Miniscreen application and assets
 app.use('/miniscreen/assets', express.static(path.resolve(config.MINISCREEN_APP_FOLDER, 'assets')));
 app.use('/miniscreen/files', express.static(path.resolve(config.FS_ROOT, config.MINISCREEN_FOLDER_NAME))); 
 app.use('/miniscreen/app', routes.miniscreen.app); // TODO: :id
 
-// Static Krumelur files in the NAS public folder
-app.use('/msb-krumelur-player/' + config.KRUMELUR_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME)));
+// Krumelur application and assets
+//app.use('/krumelur/assets', express.static(path.resolve(config.KRUMELUR_APP_FOLDER, 'assets')));
+//app.use('/miniscreen/files', express.static(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME))); 
+//app.use('/miniscreen/app', routes.krumelur.app); // TODO: :id
 
-// Application JS and CSS resources
+// TODO: REMOVE THESE  ////////////////////
+app.use('/msb-krumelur-player/' + config.KRUMELUR_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME)));
 app.use('/msb-krumelur-player', express.static(config.KRUMELUR_PLAYER_APP_FOLDER));
 
+///////////////////////////////////////////
+
 // REST API
-app.get('/api/krumelur/latest/:amount', api.getLatestKrumelurs);
-app.get('/api/krumelur/random/:amount', api.getRandomKrumelurs);
-app.post('/api/krumelur', upload.any(), api.postKrumelur);
+app.get('/api/krumelur/latest/:amount', routes.krumelur.api.getLatestKrumelurs);
+app.get('/api/krumelur/random/:amount', routes.krumelur.api.getRandomKrumelurs);
+app.post('/api/krumelur', upload.any(), routes.krumelur.api.postKrumelur);
 app.get('/api/miniscreen/:id', routes.miniscreen.api.getMiniscreen);
 
 // Error handling
