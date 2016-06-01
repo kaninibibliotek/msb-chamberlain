@@ -5,6 +5,7 @@ var path = require('path');
 var config = require('./config.js');
 var multer = require('multer');
 var api    = require('./lib/api.js');
+var routes = require('./routes');
 
 var upload = multer();
 var app = express();
@@ -17,6 +18,9 @@ app.use(function(req, res, next) {
   req.url = decodeURIComponent(req.url);
   next();
 });
+
+app.get('/miniscreentest', routes.miniscreen.app);
+app.get('/krumelurtest', routes.krumelur.app);
 
 // Static miniscreen media and Krumelur files in the NAS public folder
 app.use('/msb-miniscreen/' + config.MINISCREEN_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.MINISCREEN_FOLDER_NAME)));
