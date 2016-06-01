@@ -11,13 +11,6 @@ module.exports = {
   FS_ROOT: process.env.NODE_ENV === 'development' ?
     path.resolve(__dirname, 'mock-fs') : __dirname,
 
-  BEHAVIORS: [
-    'crazy',
-    'calm',
-    'climber',
-    'sun-gazer',
-  ],
-
   SUPPORTED_FORMATS: [
     'png',
     'jpg',
