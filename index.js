@@ -17,8 +17,8 @@ app.get('/miniscreentest', routes.miniscreen.app);
 app.get('/krumelurtest', routes.krumelur.app);
 
 // Static miniscreen media and Krumelur files in the NAS public folder
-app.use('/miniscreens', express.static(path.resolve(config.FS_ROOT, 'miniskärmar')));
-app.use('/krumelurs', express.static(path.resolve(config.FS_ROOT, 'krumelurer')));
+app.use('/msb-miniscreen/' + config.MINISCREEN_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.MINISCREEN_FOLDER_NAME)));
+app.use('/msb-krumelur-player/' + config.KRUMELUR_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME)));
 
 // Application JS and CSS resources
 app.use('/msb-krumelur-player', express.static(config.KRUMELUR_PLAYER_APP_FOLDER));
