@@ -1,7 +1,7 @@
 var _ = require('lodash');
 var config = require('../../config');
+var path = require('path');
 
 module.exports = function sendMiniscreenApp(req, res) {
-
-  res.send('hello, i am miniscreen!');
+  res.sendfile(path.resolve(config.MINISCREEN_APP_FOLDER, 'index.html'));
 };

@@ -19,9 +19,19 @@ app.use(function(req, res, next) {
   next();
 });
 
+// TESTING
 app.get('/miniscreentest', routes.miniscreen.app);
 app.get('/krumelurtest', routes.krumelur.app);
 
+
+console.log(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME));
+
+// Miniscreen application and assets
+app.use('/miniscreen/assets', express.static(path.resolve(config.MINISCREEN_APP_FOLDER, 'assets')));
+app.use('/miniscreen/files', express.static(path.resolve(config.FS_ROOT, config.MINISCREEN_FOLDER_NAME))); 
+app.use('/miniscreen/app', routes.miniscreen.app); // TODO: :id
+
+/*
 // Static miniscreen media and Krumelur files in the NAS public folder
 app.use('/msb-miniscreen/' + config.MINISCREEN_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.MINISCREEN_FOLDER_NAME)));
 app.use('/msb-krumelur-player/' + config.KRUMELUR_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME)));
@@ -29,15 +39,16 @@ app.use('/msb-krumelur-player/' + config.KRUMELUR_FOLDER_NAME, express.static(pa
 // Application JS and CSS resources
 app.use('/msb-krumelur-player', express.static(config.KRUMELUR_PLAYER_APP_FOLDER));
 app.use('/msb-miniscreen', express.static(config.MINISCREEN_APP_FOLDER));
+*/
 
 // REST API
 app.get('/api/krumelur/latest/:amount', api.getLatestKrumelurs);
 app.get('/api/krumelur/random/:amount', api.getRandomKrumelurs);
 app.post('/api/krumelur', upload.any(), api.postKrumelur);
-app.get('/api/miniscreen/:id', api.getMiniscreen);
+app.get('/api/miniscreen/:id', routes.miniscreen.api.getMiniscreen);
 
 // Error handling
-app.use(api.errorHandler);
+app.use(routes.errorHandler);
 
 var port = process.env.PORT || 3000;
 var mode = process.env.NODE_ENV === 'development' ? 'development' : 'production';
