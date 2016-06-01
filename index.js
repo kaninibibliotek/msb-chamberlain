@@ -12,6 +12,12 @@ var app = express();
 // Logging
 app.use(morgan('dev'));
 
+// Decoding
+app.use(function(req, res, next) {
+  req.url = decodeURIComponent(req.url);
+  next();
+});
+
 // Static miniscreen media and Krumelur files in the NAS public folder
 app.use('/msb-miniscreen/' + config.MINISCREEN_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.MINISCREEN_FOLDER_NAME)));
 app.use('/msb-krumelur-player/' + config.KRUMELUR_FOLDER_NAME, express.static(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME)));
