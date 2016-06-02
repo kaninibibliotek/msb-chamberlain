@@ -1,7 +1,3 @@
-// TODO move file reading stuff
-var fs = require('fs');
-var path = require('path');
-var config = require('../../config');
 var fileUtils = require('../../lib/fileUtils');
 
 // Returns a random integer between min (included) and max (excluded)
@@ -42,23 +38,26 @@ function getLatestKrumelurs(req, res) {
       var numKrumelurs = Math.min(krumelurs.length, amount);
 
       krumelurs.sort(function (k1, k2) {
-        return k1.created < k2.created; 
+        return k1.created < k2.created;
       });
 
       var latestKrumelurs =  krumelurs.slice(0, numKrumelurs);
-      
+
       res.json({results: latestKrumelurs});
     }
   });
 }
 
-// TODO!
-// Krumelurmaskin will post a new Krumelur here
-// Assign the Krumelur a behavior and save it with the correct filename
 function postKrumelur(req, res) {
-   
-  //var behavior = config.behaviors[random];
-  //
+  // test: curl -X POST -F "filename=@IMG_0074.PNG" http://localhost:3000/api/krumelur
+  // TODO error handling
+  var file = req.files[0];
+
+  console.log("POST Krumelur", file.originalname);
+
+  fileUtils.writeKrumelur(file.buffer);
+
+  res.sendStatus(200);
 }
 
 module.exports = {
