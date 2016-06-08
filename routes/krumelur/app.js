@@ -10,18 +10,30 @@ module.exports = function sendKrumelurApp(req, res, next) {
 
   // Get behaviors
   fileUtils.getBehaviors(function(err, behaviors) {
-    if (err) { next(err); }
-    
+    if (err) {
+      next(err);
+    }
+
     // Get masks
     fileUtils.getMasks(function(err, masks) {
-      if (err) { next(err); }
+      if (err) {
+        next(err);
+      }
 
-      var markup = template({
-        behaviors: JSON.stringify(behaviors || [], null, '  '),
-        masks: JSON.stringify(masks || [], null, '  '),
+      // Get effects
+      fileUtils.getEffects(function(err, effects) {
+        if (err) {
+          next(err);
+        }
+
+        var markup = template({
+          behaviors: JSON.stringify(behaviors || [], null, '  '),
+          masks:     JSON.stringify(masks || [], null, '  '),
+          effects:   JSON.stringify(effects || [], null, '  ')
+        });
+
+        res.send(markup);
       });
-
-      res.send(markup);
     });
   });
 };

@@ -41,7 +41,7 @@ function getLatestKrumelurs(req, res) {
         return k1.created < k2.created;
       });
 
-      var latestKrumelurs =  krumelurs.slice(0, numKrumelurs);
+      var latestKrumelurs = krumelurs.slice(0, numKrumelurs);
 
       res.json({results: latestKrumelurs});
     }
@@ -63,5 +63,5 @@ function postKrumelur(req, res) {
 module.exports = {
   getRandomKrumelurs: getRandomKrumelurs,
   getLatestKrumelurs: getLatestKrumelurs,
-  postKrumelur: postKrumelur,
+  postKrumelur: postKrumelur
 };
