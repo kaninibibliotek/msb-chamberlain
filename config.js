@@ -8,8 +8,9 @@ module.exports = {
   MINISCREEN_FOLDER_NAME: 'miniskärmar',
 
   // TODO: What is the NAS path?
-  FS_ROOT: process.env.NODE_ENV === 'development' ?
-    path.resolve(__dirname, 'mock-fs') : __dirname,
+  FS_ROOT: process.env.NODE_ENV === 'development'
+    ? path.resolve(__dirname, 'mock-fs')
+    : path.resolve(__dirname, '..', '..', 'shared'),   
 
   SUPPORTED_FORMATS: [
     'png',
