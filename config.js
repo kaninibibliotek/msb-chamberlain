@@ -5,6 +5,7 @@ module.exports = {
   MINISCREEN_APP_FOLDER: path.resolve(__dirname, '../msb-miniscreen/'),
 
   KRUMELUR_FOLDER_NAME: 'krumelurer',
+  EFFECT_FOLDER_NAME: 'effekter',
   MINISCREEN_FOLDER_NAME: 'miniskärmar',
 
   // TODO: What is the NAS path?
