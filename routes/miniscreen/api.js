@@ -1,6 +1,3 @@
-var fs = require('fs');
-var path = require('path');
-var config = require('../../config');
 var fileUtils = require('../../lib/fileUtils');
 
 // Sends JSON representation of all files in a miniscreen folder
@@ -15,7 +12,6 @@ function getMiniscreen(req, res, next) {
     }
   });
 }
-
 
 module.exports = {
   getMiniscreen: getMiniscreen,
