@@ -49,13 +49,18 @@ function getLatestKrumelurs(req, res) {
 }
 
 function postKrumelur(req, res) {
-  // test: curl -X POST -F "filename=@IMG_0074.PNG" http://localhost:3000/api/krumelur
-  // TODO error handling
-  var file = req.files[0];
+  // test: curl -X POST --data-binary @filnamn.png http://localhost:3000/api/krumelur
+  var buffers = [];
+  var totalLength = 0;
 
-  console.log("POST Krumelur", file.originalname);
+  req.on('data', function(data) {
+    buffers.push(data);
+    totalLength += data.length;
+  });
 
-  fileUtils.writeKrumelur(file.buffer);
+  req.on('end', function() {
+    fileUtils.writeKrumelur(Buffer.concat(buffers), totalLength);
+  });
 
   res.sendStatus(200);
 }

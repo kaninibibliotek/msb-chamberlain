@@ -3,10 +3,8 @@ var morgan = require('morgan');
 var path = require('path');
 
 var config = require('./config.js');
-var multer = require('multer');
 var routes = require('./routes');
 
-var upload = multer();
 var app = express();
 
 // Logging
@@ -32,7 +30,7 @@ app.use('/krumelur/app', routes.krumelur.app);
 // REST API
 app.get('/api/krumelur/latest/:amount', routes.krumelur.api.getLatestKrumelurs);
 app.get('/api/krumelur/random/:amount', routes.krumelur.api.getRandomKrumelurs);
-app.post('/api/krumelur', upload.any(), routes.krumelur.api.postKrumelur);
+app.post('/api/krumelur', routes.krumelur.api.postKrumelur);
 app.get('/api/miniscreen/:id', routes.miniscreen.api.getMiniscreen);
 
 // Error handling
