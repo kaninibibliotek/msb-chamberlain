@@ -59,7 +59,7 @@ function postKrumelur(req, res) {
   });
 
   req.on('end', function() {
-    fileUtils.writeKrumelur(Buffer.concat(buffers), totalLength);
+    fileUtils.writeKrumelur(Buffer.concat(buffers, totalLength));
   });
 
   res.sendStatus(200);
