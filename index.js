@@ -28,6 +28,7 @@ app.use('/krumelur/effects', express.static(path.resolve(config.FS_ROOT, config.
 app.use('/krumelur/app', routes.krumelur.app);
 
 // REST API
+app.get('/api', (req, res) => res.send('Chamberlain is up and running.'));
 app.get('/api/krumelur/latest/:amount', routes.krumelur.api.getLatestKrumelurs);
 app.get('/api/krumelur/random/:amount', routes.krumelur.api.getRandomKrumelurs);
 app.post('/api/krumelur', routes.krumelur.api.postKrumelur);
