@@ -40,6 +40,14 @@ or msb-krumelurmaskin-player
 $ open http://localhost:3000/krumelur/app
 ```
 
+## View Log
+
+SSH to NAS, then 
+
+```sh
+sudo tail -f /var/log/upstart/msb-chamberlain.log
+```
+
 ## Deploy
 
 ...
