@@ -26,13 +26,21 @@ module.exports = function sendKrumelurApp(req, res, next) {
           next(err);
         }
 
-        var markup = template({
-          behaviors: JSON.stringify(behaviors || [], null, '  '),
-          masks:     JSON.stringify(masks || [], null, '  '),
-          effects:   JSON.stringify(effects || [], null, '  ')
-        });
+        // Get the 100 latest krumelurs for testing
+        fileUtils.getLatestKrumelurs(100, function(err, krumelurs) {
+          if (err) {
+            next(err);
+          } 
 
-        res.send(markup);
+          var markup = template({
+            behaviors: JSON.stringify(behaviors || [], null, '  '),
+            masks:     JSON.stringify(masks || [], null, '  '),
+            effects:   JSON.stringify(effects || [], null, '  '),
+            krumelurs:   JSON.stringify(krumelurs || [], null, '  '),
+          });
+
+          res.send(markup);
+        });
       });
     });
   });
