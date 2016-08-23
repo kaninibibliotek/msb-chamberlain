@@ -30,20 +30,11 @@ function getRandomKrumelurs(req, res, next) {
 function getLatestKrumelurs(req, res) {
   var amount = parseInt(req.params.amount) || 1;
 
-  fileUtils.getAllKrumelurs(function(err, krumelurs) {
+  fileUtils.getLatestKrumelurs(amount, function(err, krumelurs) {
     if (err) {
       next(err);
     } else {
-      var latestKrumelurs = [];
-      var numKrumelurs = Math.min(krumelurs.length, amount);
-
-      krumelurs.sort(function (k1, k2) {
-        return k1.created < k2.created;
-      });
-
-      var latestKrumelurs = krumelurs.slice(0, numKrumelurs);
-
-      res.json({results: latestKrumelurs});
+      res.json({results: krumelurs});
     }
   });
 }
