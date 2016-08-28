@@ -4,7 +4,7 @@ module.exports = {
   KRUMELUR_APP_FOLDER: path.resolve(__dirname, '../msb-krumelur-player/'),
   MINISCREEN_APP_FOLDER: path.resolve(__dirname, '../msb-miniscreen/'),
 
-  KRUMELUR_FOLDER_NAME: 'krumelurer',
+  KRUMELUR_FOLDER_NAME: '_krumelurer',
   EFFECT_FOLDER_NAME: 'effekter',
   MINISCREEN_FOLDER_NAME: 'miniskärmar',
 
