@@ -36,7 +36,7 @@ app.use('/miniscreen/app/:id', routes.miniscreen.app);
 // Krumelur application and assets
 app.use('/krumelur/assets', express.static(path.resolve(config.KRUMELUR_APP_FOLDER, 'assets')));
 app.use('/krumelur/files', express.static(path.resolve(config.FS_ROOT, config.KRUMELUR_FOLDER_NAME)));
-app.use('/krumelur/effects', express.static(path.resolve(config.FS_ROOT, config.EFFECT_FOLDER_NAME)));
+app.use('/krumelur/effects', express.static(path.resolve(config.KRUMELUR_APP_FOLDER, 'effects')));
 app.use('/krumelur/app', routes.krumelur.app);
 
 // REST API
