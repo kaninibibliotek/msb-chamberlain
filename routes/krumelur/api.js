@@ -39,7 +39,7 @@ function getLatestKrumelurs(req, res) {
   });
 }
 
-function postKrumelur(req, res) {
+function postKrumelur(req, res, next) {
   // test: curl -X POST --data-binary @filnamn.png http://localhost:3000/api/krumelur
   var buffers = [];
   var totalLength = 0;
@@ -50,7 +50,9 @@ function postKrumelur(req, res) {
   });
 
   req.on('end', function() {
-    fileUtils.writeKrumelur(Buffer.concat(buffers, totalLength));
+    var krumelurJson =  fileUtils.writeKrumelur(Buffer.concat(buffers, totalLength));
+    req.krumelur = krumelurJson;
+    next();
   });
 
   res.sendStatus(200);
