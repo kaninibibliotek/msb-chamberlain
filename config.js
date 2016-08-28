@@ -6,7 +6,7 @@ module.exports = {
 
   KRUMELUR_FOLDER_NAME: '_krumelurer',
   EFFECT_FOLDER_NAME: 'effekter',
-  MINISCREEN_FOLDER_NAME: 'miniskärmar',
+  MINISCREEN_FOLDER_NAME: '_miniskärmar',
 
   FS_ROOT: process.env.NODE_ENV === 'development'
     ? path.resolve(__dirname, 'mock-fs')               
