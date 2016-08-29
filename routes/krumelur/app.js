@@ -33,6 +33,7 @@ module.exports = function sendKrumelurApp(req, res, next) {
           } 
 
           var markup = template({
+            env: process.env.NODE_ENV,
             behaviors: JSON.stringify(behaviors || [], null, '  '),
             masks:     JSON.stringify(masks || [], null, '  '),
             effects:   JSON.stringify(effects || [], null, '  '),

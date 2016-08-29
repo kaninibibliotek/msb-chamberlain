@@ -9,6 +9,7 @@ module.exports = function sendMiniscreenApp(req, res) {
 
   res.send(
     template({
+      env: process.env.NODE_ENV,
       screenId: req.params.id
     })
   );
