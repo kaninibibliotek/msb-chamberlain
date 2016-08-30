@@ -1,28 +1,13 @@
 var fileUtils = require('../../lib/fileUtils');
 
-// Returns a random integer between min (included) and max (excluded)
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
 function getRandomKrumelurs(req, res, next) {
   var amount = parseInt(req.params.amount) || 1;
 
-  fileUtils.getAllKrumelurs(function(err, krumelurs) {
+  fileUtils.getRandomKrumelurs(amount, (err, krumelurs) => {
     if (err) {
       next(err);
     } else {
-      var randomKrumelurs = [];
-      var numKrumelurs = Math.min(krumelurs.length, amount);
-
-      for (var i = 0; i < numKrumelurs; i++) {
-        var index = getRandomInt(0, krumelurs.length);
-
-        // Remove each selected element so we won't get more of the same
-        randomKrumelurs = randomKrumelurs.concat(krumelurs.splice(index, 1));
-      }
-
-      res.json({results: randomKrumelurs});
+      res.json({results: krumelurs});
     }
   });
 }
